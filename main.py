@@ -6,6 +6,8 @@ class Habitant:
         assert type(name) == str, "name string needed"
         assert type(daysAbsentDuringBillingPeriod) in [type(2), type(
             2.2)], "daysAbsentDuringBillingPeriod of numeric type needed: no symbols, decimals ok"
+        assert daysAbsentDuringBillingPeriod >= 0, "can't have negative days absent"
+
         self.name = name
         self.daysAbsentDuringBillingPeriod = daysAbsentDuringBillingPeriod
 
@@ -17,6 +19,9 @@ class Bill:
     def __init__(self, period, cost):
         assert type(period) in [type(2), type(2.2)], "period of numeric type needed: no symbols, decimals ok"
         assert type(cost) in [type(2), type(2.2)], "cost of numeric type needed: no symbols, decimals ok"
+        assert period > 0, "period must be greater than 0"
+        assert cost > 0, "cost must be greater than 0"
+
         self.period = period
         self.cost = cost
 
@@ -41,8 +46,7 @@ class Calculator:
             assert not habitant.daysAbsentDuringBillingPeriod > self.bill.period, "days absent for habitant " + habitant.name + " is greater than the billing period, this is not possible"
             totalDaysSpentInApartmentByEverybody = totalDaysSpentInApartmentByEverybody + self.bill.period - habitant.daysAbsentDuringBillingPeriod
 
-        if totalDaysSpentInApartmentByEverybody == 0:
-            raise Exception("totalDaysSpentInApartmentByEverybody can't be 0")
+        assert not totalDaysSpentInApartmentByEverybody == 0, "totalDaysSpentInApartmentByEverybody can't be 0"
 
         print("totalDaysSpentInApartmentByEverybody " + str(totalDaysSpentInApartmentByEverybody) + "\n")
         return totalDaysSpentInApartmentByEverybody
@@ -53,7 +57,8 @@ class Calculator:
         print("share of the cost of the €" + str(self.bill.cost) + " bill with a period of " + str(
             self.bill.period) + " days\n")
         for habitant in self.habitants:
-            shareOfCost = (self.bill.period - habitant.daysAbsentDuringBillingPeriod) / totalDaysSpentInApartmentByEverybody * self.bill.cost
+            shareOfCost = (
+                                      self.bill.period - habitant.daysAbsentDuringBillingPeriod) / totalDaysSpentInApartmentByEverybody * self.bill.cost
 
             print(
                 habitant.name + " was absent " + str(habitant.daysAbsentDuringBillingPeriod) + " days and owes €" + str(
@@ -66,7 +71,7 @@ if __name__ == '__main__':
     habitants = [
         Habitant(name="ben", daysAbsentDuringBillingPeriod=0),
         Habitant(name="matty", daysAbsentDuringBillingPeriod=0),
-        Habitant(name="james", daysAbsentDuringBillingPeriod=8)
+        Habitant(name="james", daysAbsentDuringBillingPeriod=0)
     ]
 
     Calculator(bill=bill, habitants=habitants).calculateShareOfCost()

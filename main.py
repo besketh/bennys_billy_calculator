@@ -28,10 +28,12 @@ class Calculator:
         self.bill = bill
         self.habitants = habitants
 
-        assert type(self.bill) == Bill and self.bill is not None
-        assert type(self.habitants) == list
-        for habitant in self.habitants:
-            assert type(habitant) == Habitant
+        assert self.bill is not None, "bill is needed"
+        assert type(self.bill) == Bill, "bill must be of type Bill"
+        assert type(self.habitants) == list, "habitants must be a list"
+        assert self.habitants, "need at least 1 habitant"
+        for count, habitant in enumerate(self.habitants, start=1):
+            assert type(habitant) == Habitant, "habitant " + str(count) + " is not of type Habitant"
 
     def calculateTotalDaysSpentInApartmentByEverybody(self):
         totalDaysSpentInApartmentByEverybody = 0
@@ -47,7 +49,7 @@ class Calculator:
     def calculateShareOfCost(self):
         totalDaysSpentInApartmentByEverybody = self.calculateTotalDaysSpentInApartmentByEverybody()
 
-        print("share of the cost of the €" + str(bill.cost) + " bill with a period of " + str(bill.period) + " days\n")
+        print("share of the cost of the €" + str(self.bill.cost) + " bill with a period of " + str(self.bill.period) + " days\n")
         for habitant in self.habitants:
             shareOfCost = (self.bill.period - habitant.daysAbsentDuringBillingPeriod) / totalDaysSpentInApartmentByEverybody * self.bill.cost
 

@@ -9,8 +9,8 @@ if __name__ == '__main__':
     bill = Bill(period=57, cost=140.11)
 
     habitants = [
-        Habitant(name="ben", daysAbsentDuringBillingPeriod=0),
-        Habitant(name="matty", daysAbsentDuringBillingPeriod=0),
+        Habitant(name="ben"),#default val for daysAbsentDuringBillingPeriod=0 
+        Habitant(name="matty"),
         Habitant(name="james", daysAbsentDuringBillingPeriod=8)
     ]
 

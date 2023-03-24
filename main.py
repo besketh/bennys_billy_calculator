@@ -2,7 +2,7 @@ class Habitant:
     name = None
     daysAbsentDuringBillingPeriod = None
 
-    def __init__(self, name, daysAbsentDuringBillingPeriod):
+    def __init__(self, name, daysAbsentDuringBillingPeriod=0):
         assert type(name) == str, "name string needed"
         assert type(daysAbsentDuringBillingPeriod) in [type(2), type(
             2.2)], "daysAbsentDuringBillingPeriod of numeric type needed: no symbols, decimals ok"
@@ -57,8 +57,7 @@ class Calculator:
         print("share of the cost of the €" + str(self.bill.cost) + " bill with a period of " + str(
             self.bill.period) + " days\n")
         for habitant in self.habitants:
-            shareOfCost = (
-                                      self.bill.period - habitant.daysAbsentDuringBillingPeriod) / totalDaysSpentInApartmentByEverybody * self.bill.cost
+            shareOfCost = (self.bill.period - habitant.daysAbsentDuringBillingPeriod) / totalDaysSpentInApartmentByEverybody * self.bill.cost
 
             print(
                 habitant.name + " was absent " + str(habitant.daysAbsentDuringBillingPeriod) + " days and owes €" + str(
@@ -69,9 +68,9 @@ if __name__ == '__main__':
     bill = Bill(period=57, cost=140.11)
 
     habitants = [
-        Habitant(name="ben", daysAbsentDuringBillingPeriod=0),
-        Habitant(name="matty", daysAbsentDuringBillingPeriod=0),
-        Habitant(name="james", daysAbsentDuringBillingPeriod=0)
+        Habitant(name="ben"),
+        Habitant(name="matty"),
+        Habitant(name="james", daysAbsentDuringBillingPeriod=8)
     ]
 
     Calculator(bill=bill, habitants=habitants).calculateShareOfCost()

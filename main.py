@@ -3,10 +3,11 @@ class Habitant:
     daysAbsentDuringBillingPeriod = None
 
     def __init__(self, name, daysAbsentDuringBillingPeriod):
+        assert type(name) == str, "name string needed"
+        assert type(daysAbsentDuringBillingPeriod) in [type(2), type(
+            2.2)], "daysAbsentDuringBillingPeriod of numeric type needed: no symbols, decimals ok"
         self.name = name
         self.daysAbsentDuringBillingPeriod = daysAbsentDuringBillingPeriod
-        assert name is not None, "name needed"
-        assert daysAbsentDuringBillingPeriod is not None, "daysAbsentDuringBillingPeriod needed"
 
 
 class Bill:
@@ -14,10 +15,10 @@ class Bill:
     cost = None
 
     def __init__(self, period, cost):
+        assert type(period) in [type(2), type(2.2)], "period of numeric type needed: no symbols, decimals ok"
+        assert type(cost) in [type(2), type(2.2)], "cost of numeric type needed: no symbols, decimals ok"
         self.period = period
         self.cost = cost
-        assert period, "period needed"
-        assert cost, "cost needed"
 
 
 class Calculator:
@@ -25,15 +26,14 @@ class Calculator:
     habitants = None
 
     def __init__(self, bill, habitants):
+        assert type(bill) == Bill, "bill must be of type Bill"
+        assert type(habitants) == list, "habitants must be a list"
+        assert habitants, "need at least 1 habitant"
+        for count, habitant in enumerate(habitants, start=1):
+            assert type(habitant) == Habitant, "habitant " + str(count) + " is not of type Habitant"
+
         self.bill = bill
         self.habitants = habitants
-
-        assert self.bill is not None, "bill is needed"
-        assert type(self.bill) == Bill, "bill must be of type Bill"
-        assert type(self.habitants) == list, "habitants must be a list"
-        assert self.habitants, "need at least 1 habitant"
-        for count, habitant in enumerate(self.habitants, start=1):
-            assert type(habitant) == Habitant, "habitant " + str(count) + " is not of type Habitant"
 
     def calculateTotalDaysSpentInApartmentByEverybody(self):
         totalDaysSpentInApartmentByEverybody = 0

@@ -38,6 +38,7 @@ class Calculator:
     def calculateTotalDaysSpentInApartmentByEverybody(self):
         totalDaysSpentInApartmentByEverybody = 0
         for habitant in self.habitants:
+            assert not habitant.daysAbsentDuringBillingPeriod > self.bill.period, "days absent for habitant " + habitant.name + " is greater than the billing period, this is not possible"
             totalDaysSpentInApartmentByEverybody = totalDaysSpentInApartmentByEverybody + self.bill.period - habitant.daysAbsentDuringBillingPeriod
 
         if totalDaysSpentInApartmentByEverybody == 0:
@@ -49,7 +50,8 @@ class Calculator:
     def calculateShareOfCost(self):
         totalDaysSpentInApartmentByEverybody = self.calculateTotalDaysSpentInApartmentByEverybody()
 
-        print("share of the cost of the €" + str(self.bill.cost) + " bill with a period of " + str(self.bill.period) + " days\n")
+        print("share of the cost of the €" + str(self.bill.cost) + " bill with a period of " + str(
+            self.bill.period) + " days\n")
         for habitant in self.habitants:
             shareOfCost = (self.bill.period - habitant.daysAbsentDuringBillingPeriod) / totalDaysSpentInApartmentByEverybody * self.bill.cost
 

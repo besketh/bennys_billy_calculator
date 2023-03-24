@@ -2,7 +2,7 @@
 calculates bills for those annoying housemates that tend to go on holiday a lot
 
 
-implementation:
+## implementation:
 
 ```
 if __name__ == '__main__':

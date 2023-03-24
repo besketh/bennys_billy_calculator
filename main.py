@@ -48,7 +48,7 @@ class Calculator:
 
         assert not totalDaysSpentInApartmentByEverybody == 0, "totalDaysSpentInApartmentByEverybody can't be 0"
 
-        print("totalDaysSpentInApartmentByEverybody " + str(totalDaysSpentInApartmentByEverybody) + "\n")
+        print("total days spent in the apartment by everybody = " + str(totalDaysSpentInApartmentByEverybody) + "\n")
         return totalDaysSpentInApartmentByEverybody
 
     def calculateShareOfCost(self):

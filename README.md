@@ -18,4 +18,4 @@ if __name__ == '__main__':
 
     Calculator(bill=bill, habitants=habitants).calculateShareOfCost()
 ```
-changes names and figures as needed, add or remove habitants as needed
+change the names and figures as needed; add or remove habitants as needed

@@ -9,10 +9,12 @@ if __name__ == '__main__':
     bill = Bill(period=57, cost=140.11)
 
     habitants = [
-        Habitant(name="ben"),#default val for daysAbsentDuringBillingPeriod=0 
+        Habitant(name="ben"), 
         Habitant(name="matty"),
         Habitant(name="james", daysAbsentDuringBillingPeriod=8)
     ]
+    
+    #default value for daysAbsentDuringBillingPeriod=0
 
     Calculator(bill=bill, habitants=habitants).calculateShareOfCost()
 ```

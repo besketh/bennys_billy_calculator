@@ -69,7 +69,7 @@ if __name__ == '__main__':
 
     habitants = [
         Habitant(name="Jaume", daysAbsentDuringBillingPeriod=8),
-        Habitant(name="Mateo", daysAbsentDuringBillingPeriod=8)
+        Habitant(name="Mateo", daysAbsentDuringBillingPeriod=8),
         Habitant(name="Berta", daysAbsentDuringBillingPeriod=8),
         Habitant(name="Benito", daysAbsentDuringBillingPeriod=8)
     ]

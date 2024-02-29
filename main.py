@@ -68,9 +68,10 @@ if __name__ == '__main__':
     bill = Bill(period=57, cost=140.11)
 
     habitants = [
-        Habitant(name="ben"),
-        Habitant(name="matty"),
-        Habitant(name="james", daysAbsentDuringBillingPeriod=8)
+        Habitant(name="Jaume", daysAbsentDuringBillingPeriod=8),
+        Habitant(name="Mateo", daysAbsentDuringBillingPeriod=8)
+        Habitant(name="Berta", daysAbsentDuringBillingPeriod=8),
+        Habitant(name="Benito", daysAbsentDuringBillingPeriod=8)
     ]
 
     Calculator(bill=bill, habitants=habitants).calculateShareOfCost()
